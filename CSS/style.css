@@ -1,0 +1,15 @@
+/* No incluir la etiqueta o tag <style>  */
+body{
+    background-color: brown;
+}
+h1{
+    color:rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: underline;
+    font-family: calibri, sans-serif;
+}
+p{
+    color:cornflowerblue;
+    font-size: 30px;
+    text-align: justify;
+}
