@@ -13,3 +13,13 @@ p{
     font-size: 30px;
     text-align: justify;
 }
+.conBorde
+{
+    border-color: blue;
+    border-width: 10px;
+    border-style: solid;
+    padding-top : 20px;
+    padding-left: 10px;
+
+    margin-top: 150px;
+}
