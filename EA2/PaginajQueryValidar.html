@@ -15,11 +15,12 @@
 <body>
     <div class="container"> 
         <h1 class="text-center mt-5">jQuery</h1>
-        <input type="text" name="txtRut"    class="txtRut"      placeholder="Ej:10200300">
-        <input type="text" name="txDv"      class="txDv"        placeholder="Ej:K"><br>
-        <input type="text" name="txtNombre" class="txtNombre"   placeholder="Ej: Juan"><br>
-        <input type="text" name="txtEmail"  class="txtEmail"    placeholder="Ej: casilla@mail.cl"><br>
+        <input type="text" name="txtRut"    class="txtRut"    maxlength="8"   placeholder="Ej:10200300">
+        <input type="text" name="txtDv"     class="txtDv"     maxlength="1" size="1"  placeholder="Ej:K"><br>
+        <input type="text" name="txtNombre" class="txtNombre" maxlength="50"  placeholder="Ej: Juan"><br>
+        <input type="text" name="txtEmail"  class="txtEmail"  maxlength="50"  placeholder="Ej: casilla@mail.cl"><br>
         <button class="btnAceptar">Aceptar</button>
+        <button class="btnLimpiar">Limpiar</button>
     </div>
 </body>
 </html>
