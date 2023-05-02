@@ -34,12 +34,6 @@ $(function()
 
     $('.btnLimpiar').click(function()
     {
-/*        $('.txtRut').val('');
-        $('.txDv').val('');
-        $('.txtNombre').val('');
-        $('.txtEmail').val('');
- */       
-        
         $('.txtRut, .txtDv, .txtNombre, .txtEmail').val('');
         $('.txtRut').focus();
     });
