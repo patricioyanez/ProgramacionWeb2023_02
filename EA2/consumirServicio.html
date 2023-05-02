@@ -17,7 +17,13 @@
                 function(data) {
                     $.each(data.categories, function(i, item)
                     {
-                        
+                        $('.tblComida').append('<tr>' +
+                                '<td>' + item.idCategory +
+                                '<td><img src="' + item.strCategoryThumb + '">' +
+                                '<td>' + item.strCategory +
+                                '<td>' + item.strCategoryDescription +
+                                '</tr>'
+                                );
                     });
                 })                
             });
