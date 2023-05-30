@@ -1,0 +1,19 @@
+{% extends "plantillaBase.html" %}
+{# comentario: hereda de la plantilla base #}
+{% block tituloPestana %} Administración Marca{% endblock %}
+{% block titulo %} Marca {% endblock %}
+{% block contenido %}
+
+{% endblock %}
+
+{% block listado %}
+    <table>
+    {% for marca in marcas %}
+        <tr>
+            <td>{{ marca.idMarca }}
+            <td>{{ marca.nombre }}
+            <td>{{ marca.activo }}
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
