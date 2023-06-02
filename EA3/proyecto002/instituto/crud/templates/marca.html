@@ -2,19 +2,35 @@
 {# comentario: hereda de la plantilla base #}
 {% block tituloPestana %} Administración Marca{% endblock %}
 {% block titulo %} Marca {% endblock %}
+{% block mensaje %}
+    {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ error }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    {% if exito %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ exito }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    {% endif %}
+{% endblock %}
 {% block contenido %}
     <form method="POST" action="{% url 'marca' %}">
+        {% csrf_token %} 
         <div class="row">
             <div class="col-2 offset-2">Id</div>
-            <div class="col-5"><input type="text" name="id" class="form-control"></div>
+            <div class="col-5"><input type="text" name="id" value="{{ item.idMarca }}" class="form-control"></div>
         </div>
         <div class="row">
             <div class="col-2 offset-2">Nombre</div>
-            <div class="col-5"><input type="text" name="nombre" class="form-control"></div>
+            <div class="col-5"><input type="text" name="nombre" value="{{ item.nombre }}" class="form-control"></div>
         </div>
         <div class="row">
             <div class="col-2 offset-2">Activo</div>
-            <div class="col-5"><input type="checkbox" name="activo" class="form-check-input"></div>
+            <div class="col-5"><input type="checkbox" name="activo" {{item.activo |yesno:"checked,''"}} class="form-check-input"></div>
         </div>
         <br>
         
@@ -31,18 +47,20 @@
 {% endblock %}
 
 {% block listado %}
-    <table class="table table-responsive table-striped table-bordered">
-        <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Activo</th>
-        </tr>
-    {% for marca in listado %}
-        <tr>
-            <td>{{ marca.idMarca }}
-            <td>{{ marca.nombre | capfirst }}
-            <td>{{ marca.activo }}
-        </tr>
-    {% endfor %}
-    </table>
+    {% if listado %}
+        <table class="table table-responsive table-striped table-bordered">
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Activo</th>
+            </tr>
+        {% for marca in listado %}
+            <tr>
+                <td>{{ marca.idMarca }}
+                <td>{{ marca.nombre | capfirst }}
+                <td>{{ marca.activo }}
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
 {% endblock %}
