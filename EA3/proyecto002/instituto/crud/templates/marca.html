@@ -3,7 +3,31 @@
 {% block tituloPestana %} Administración Marca{% endblock %}
 {% block titulo %} Marca {% endblock %}
 {% block contenido %}
-
+    <form method="POST" action="{% url 'marca' %}">
+        <div class="row">
+            <div class="col-2 offset-2">Id</div>
+            <div class="col-5"><input type="text" name="id" class="form-control"></div>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-2">Nombre</div>
+            <div class="col-5"><input type="text" name="nombre" class="form-control"></div>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-2">Activo</div>
+            <div class="col-5"><input type="checkbox" name="activo" class="form-check-input"></div>
+        </div>
+        <br>
+        
+        <div class="row">
+            <div class="col-2 offset-2">Opciones</div>
+            <div class="col-5">
+                <input type="submit" value="Grabar" name="Grabar" class="btn btn-danger">
+                <input type="submit" value="Listar" name="Listar" class="btn btn-warning">
+                <input type="submit" value="Buscar" name="Buscar" class="btn btn-success">
+                <input type="submit" value="Eliminar" name="Eliminar" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
 {% endblock %}
 
 {% block listado %}
