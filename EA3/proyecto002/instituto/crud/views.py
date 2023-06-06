@@ -1,7 +1,106 @@
 from django.shortcuts import render
-from .models import Marca
+from .models import Marca, Categoria,Genero
 
+# importar los Form
+from .forms import ClienteForm
 # Create your views here.
+
+# crear modelo producto y usar la clase Forms de Django para crear formulario
+def clienteForm(request):
+    if request.method == 'POST':
+        if 'Grabar' in request.POST:
+            form = ClienteForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                context = {'form': ClienteForm(), 'exito':'Datos guardados'}
+            else:                
+                context = {'form': ClienteForm(), 'error':'Datos No guardados'}
+    else:
+        context = {'form':  ClienteForm()}
+    return render(request, 'clienteForm.html', context)
+
+
+def categoria(request):
+    #orm
+    context = {}
+    if request.method == 'POST':
+        id = int("0" + request.POST['id'])
+        nombre = request.POST['nombre']
+        activo = 'activo' in request.POST
+
+        if 'Grabar' in request.POST: # fue presionado el grabar
+            if id == 0: # insert
+                Categoria.objects.create(nombre=nombre, activo=activo)
+                context = {'exito' : 'Los datos fueron guardados'}
+            else: # update
+                try:
+                    item = Categoria.objects.get(pk = id)
+                    item.nombre = nombre
+                    item.activo = activo
+                    item.save()
+                    context = {'exito' : 'Los datos fueron guardados'}
+                except:                    
+                    context = {'error' : 'Los datos NO fueron guardados'}
+        elif 'Listar' in request.POST:
+            listado = Categoria.objects.all() # select * from categoria
+            context = {'listado': listado}
+        elif 'Buscar' in request.POST:
+            try:
+                item = Categoria.objects.get(pk = id)
+                context = {'item': item }
+            except:
+                context = {'error' : 'El id no fue encontrado'}
+        elif 'Eliminar' in request.POST:
+            try:
+                item = Categoria.objects.get(pk = id)
+                item.delete()
+                context = {'exito' : 'El id fue ELIMINADO'}
+            except:
+                context = {'error' : 'El id no fue encontrado'}
+
+    return render(request, 'categoria.html', context)
+
+def genero(request):
+    #orm
+    context = {}
+    if request.method == 'POST':
+        id = int("0" + request.POST['id'])
+        nombre = request.POST['nombre']
+        activo = 'activo' in request.POST
+
+        if 'Grabar' in request.POST: # fue presionado el grabar
+            if id == 0: # insert
+                Genero.objects.create(nombre=nombre, activo=activo)
+                context = {'exito' : 'Los datos fueron guardados'}
+            else: # update
+                try:
+                    item = Genero.objects.get(pk = id)
+                    item.nombre = nombre
+                    item.activo = activo
+                    item.save()
+                    context = {'exito' : 'Los datos fueron guardados'}
+                except:                    
+                    context = {'error' : 'Los datos NO fueron guardados'}
+        elif 'Listar' in request.POST:
+            listado = Genero.objects.all() # select * from genero
+            context = {'listado': listado}
+        elif 'Buscar' in request.POST:
+            try:
+                item = Genero.objects.get(pk = id)
+                context = {'item': item }
+            except:
+                context = {'error' : 'El id no fue encontrado'}
+        elif 'Eliminar' in request.POST:
+            try:
+                item = Genero.objects.get(pk = id)
+                item.delete()
+                context = {'exito' : 'El id fue ELIMINADO'}
+            except:
+                context = {'error' : 'El id no fue encontrado'}
+
+    return render(request, 'genero.html', context)
+
 def marca(request):
     #orm
     context = {}

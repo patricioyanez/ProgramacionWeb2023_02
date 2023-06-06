@@ -1,7 +1,7 @@
 {% extends "plantillaBase.html" %}
 {# comentario: hereda de la plantilla base #}
-{% block tituloPestana %} Administración Marca{% endblock %}
-{% block titulo %} Marca {% endblock %}
+{% block tituloPestana %} Administración Género{% endblock %}
+{% block titulo %} Género {% endblock %}
 {% block mensaje %}
     {% if error %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -18,11 +18,11 @@
     {% endif %}
 {% endblock %}
 {% block contenido %}
-    <form method="POST" action="{% url 'marca' %}">
+    <form method="POST" action="{% url 'genero' %}">
         {% csrf_token %} 
         <div class="row">
             <div class="col-2 offset-2">Id</div>
-            <div class="col-5"><input type="text" name="id" value="{{ item.idMarca }}" class="form-control"></div>
+            <div class="col-5"><input type="text" name="id" value="{{ item.idGenero }}" class="form-control"></div>
         </div>
         <div class="row">
             <div class="col-2 offset-2">Nombre</div>
@@ -56,7 +56,7 @@
             </tr>
         {% for objeto in listado %}
             <tr>
-                <td>{{ objeto.idMarca }}
+                <td>{{ objeto.idGenero }}
                 <td>{{ objeto.nombre | capfirst }}
                 <td>{{ objeto.activo }}
             </tr>
