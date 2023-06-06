@@ -7,17 +7,17 @@ from .forms import ClienteForm
 
 # crear modelo producto y usar la clase Forms de Django para crear formulario
 def clienteForm(request):
+    context = {'form':  ClienteForm()}
     if request.method == 'POST':
         if 'Grabar' in request.POST:
             form = ClienteForm(request.POST)
 
             if form.is_valid():
                 form.save()
-                context = {'form': ClienteForm(), 'exito':'Datos guardados'}
+                context['exito']='Datos guardados'
             else:                
-                context = {'form': ClienteForm(), 'error':'Datos No guardados'}
-    else:
-        context = {'form':  ClienteForm()}
+                context['error']='Datos No guardados'
+
     return render(request, 'clienteForm.html', context)
 
 
