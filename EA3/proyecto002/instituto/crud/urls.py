@@ -6,6 +6,7 @@ urlpatterns =[
     path('categoria', views.categoria, name='categoria'),
     path('genero', views.genero, name='genero'),
     path('clienteForm', views.clienteForm, name='clienteForm'),
+    path('menu', views.menu, name='menu'),
 ]
 # EJERCICIO: crear crud para categoria y genero
 # para acceder al formulario marca

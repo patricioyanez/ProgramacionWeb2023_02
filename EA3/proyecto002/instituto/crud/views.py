@@ -5,6 +5,10 @@ from .models import Marca, Categoria,Genero
 from .forms import ClienteForm
 # Create your views here.
 
+def menu(request):
+    return render(request, 'menu.html')
+
+
 # crear modelo producto y usar la clase Forms de Django para crear formulario
 def clienteForm(request):
     context = {'form':  ClienteForm()}
