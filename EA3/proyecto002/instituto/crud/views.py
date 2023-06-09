@@ -5,11 +5,16 @@ from .models import Marca, Categoria,Genero
 from .forms import ClienteForm
 # Create your views here.
 
+# importar decoradores
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def menu(request):
     return render(request, 'menu.html')
 
 
 # crear modelo producto y usar la clase Forms de Django para crear formulario
+@login_required
 def clienteForm(request):
     context = {'form':  ClienteForm()}
     if request.method == 'POST':
@@ -24,7 +29,7 @@ def clienteForm(request):
 
     return render(request, 'clienteForm.html', context)
 
-
+@login_required
 def categoria(request):
     #orm
     context = {}
@@ -64,7 +69,7 @@ def categoria(request):
                 context = {'error' : 'El id no fue encontrado'}
 
     return render(request, 'categoria.html', context)
-
+@login_required
 def genero(request):
     #orm
     context = {}
@@ -104,7 +109,7 @@ def genero(request):
                 context = {'error' : 'El id no fue encontrado'}
 
     return render(request, 'genero.html', context)
-
+@login_required
 def marca(request):
     #orm
     context = {}
