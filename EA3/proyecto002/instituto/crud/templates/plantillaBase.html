@@ -41,7 +41,16 @@
                       <li><a class="dropdown-item" href="{% url 'clienteForm' %}">Cliente</a></li>
                     </ul>
                   </li>
-{% endif %}                 
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                    </ul>
+                  </li>
+{% endif %}         
+        
                 </ul>                
               </div>
             </div>
